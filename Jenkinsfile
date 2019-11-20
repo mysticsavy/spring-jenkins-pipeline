@@ -30,7 +30,10 @@ pipeline {
         stage('Staging deployment approval') {
             input {
                 message "Proceed to staging deployment?"
-                ok "Yes"
+                ok "Proceed"
+            }
+            steps {
+                echo "Proceeding with staging deployment..."
             }
         }
         stage('Deploy to Staging') {
