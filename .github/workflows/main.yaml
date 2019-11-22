@@ -17,3 +17,8 @@ jobs:
         run: mvn -B -DskipTests clean package
       - name: Test with Maven
         run: mvn test
+      - name: Deploy to Dev
+        env:
+          dev_env_username: ${{ secrets.dev_env_username }}
+          dev_env_password: ${{ secrets.dev_env_password }}
+        run: ./.github/scripts/deploy.sh "dev" 2 3 4 5 "$dev_env_username" "$dev_env_password" 8 9 10 11 12 13 14 15 16 17 18
