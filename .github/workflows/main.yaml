@@ -13,6 +13,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v1
+        with:
+          path: $HOME/.m2
+          key: aQ4e6a@rpefw^KSumO!3
       - name: Build with Maven
         run: mvn -B -DskipTests clean package
       - name: Test with Maven

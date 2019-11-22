@@ -5,13 +5,13 @@
   <parent>
       <groupId>com.mycompany.app</groupId>
       <artifactId>repository-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0.0-SNAPSHOT</version>
       <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>updates</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>Updates API</name>
 
   <build>
