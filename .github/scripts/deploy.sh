@@ -63,7 +63,7 @@ PRODUCTS_VERSION=${VERSION}
 # PRODUCTS_UMT_API_PATH="wumapi/1.0.0/properties?path=/_system/governance/patchs/WSO2-CARBON-PATCH-"
 # PRODUCTS_IGNORED_EXTENSIONS="jag,js,sh,css,html,xml,conf,war,json"
 PRODUCTS_JAR="products-"${VERSION}".jar"
-PRODUCTS_FILE_PATH="./repository-api/products/target/products-"${VERSION}".jar"
+PRODUCTS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/products/target/products-"${VERSION}".jar"
 PRODUCTS_API_URL="https://"${TENANT}"-products-v3.wso2apps.com/products/"
 
 ###### Updates Microservice
@@ -72,7 +72,7 @@ UPDATES_APP_DESC="Updates-MS"
 UPDATES_DB="updatesdb"
 UPDATES_VERSION=${VERSION}
 UPDATES_JAR="updates-"${VERSION}".jar"
-UPDATES_FILE_PATH="./repository-api/updates/target/updates-"${VERSION}".jar"
+UPDATES_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/updates/target/updates-"${VERSION}".jar"
 UPDATES_API_URL="https://"${TENANT}"-"${UPDATES_APPNAME}".wso2apps.com/updates/"
 
 ###### Subscription Microservice
@@ -81,7 +81,7 @@ SUBSCRIPTION_APP_DESC="Subscription-MS"
 SUBSCRIPTION_VERSION=${VERSION}
 SUBSCRIPTION_DB="subscriptiondb"
 SUBSCRIPTION_JAR="subscriptions-"${VERSION}".jar"
-SUBSCRIPTION_FILE_PATH="./repository-api/subscriptions/target/subscriptions-"${VERSION}".jar"
+SUBSCRIPTION_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/subscriptions/target/subscriptions-"${VERSION}".jar"
 SUBSCRIPTION_SALESFORCE_URL="https://wso2.my.salesforce.com"
 SUBSCRIPTION_TRIAL_DAYS="15"
 SUBSCRIPTION_CACHE_EXPIRY="1"
@@ -96,7 +96,7 @@ CHANNELS_DB="channelsdb"
 CHANNELS_VERSION=${VERSION}
 CHANNELS_JAR="channels-"${VERSION}".jar"
 DEFAULT_CHANNEL="full"
-CHANNELS_FILE_PATH="./repository-api/channels/target/channels-"${VERSION}".jar"
+CHANNELS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/channels/target/channels-"${VERSION}".jar"
 CHANNELS_API_URL="https://"${TENANT}"-channels-v3.wso2apps.com/channels/"
 
 ##################################################################################################################
