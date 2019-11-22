@@ -63,7 +63,7 @@ PRODUCTS_VERSION=${VERSION}
 # PRODUCTS_UMT_API_PATH="wumapi/1.0.0/properties?path=/_system/governance/patchs/WSO2-CARBON-PATCH-"
 # PRODUCTS_IGNORED_EXTENSIONS="jag,js,sh,css,html,xml,conf,war,json"
 PRODUCTS_JAR="products-"${VERSION}".jar"
-PRODUCTS_FILE_PATH="repository-api/products/target/products-"${VERSION}".jar"
+PRODUCTS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/products/target/products-"${VERSION}".jar"
 PRODUCTS_API_URL="https://"${TENANT}"-products-v3.wso2apps.com/products/"
 
 ###### Updates Microservice
@@ -249,6 +249,10 @@ function uploadChannelsMS() {
 }
 
 echo "current directory: $PWD"
+
+ls -la ${GITHUB_WORKSPACE}
+ls -la ${GITHUB_WORKSPACE}/repository-api/
+ls -la ${GITHUB_WORKSPACE}/repository-api/channels
 
 appCloudLogin
 
