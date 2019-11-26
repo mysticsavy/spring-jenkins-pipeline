@@ -20,6 +20,12 @@ jobs:
         run: mvn -B -DskipTests clean package
       - name: Test with Maven
         run: mvn test
+      - name: Generate build number
+          uses: einaregilsson/build-number@v2
+          with:
+            token: ${{secrets.github_token}}
+      - name: Print new build number
+        run: echo "Build number is $BUILD_NUMBER"
       - name: Deploy to Dev
         env:
           dev_env_username: ${{ secrets.dev_env_username }}
