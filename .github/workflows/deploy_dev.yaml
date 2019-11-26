@@ -1,6 +1,8 @@
-name: Java CI
+name: Deploy to Dev
 
 on: [push]
+branches:
+  - dev
 
 jobs:
   build:
@@ -13,11 +15,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Cache Maven Dependencies
-        uses: actions/cache@v1
-        with:
-          path: .m2
-          key: aQ4e6a@rpefw^KSumO!3
       - name: Build with Maven
         run: mvn -B -DskipTests clean package
       - name: Test with Maven
@@ -26,4 +23,4 @@ jobs:
         env:
           dev_env_username: ${{ secrets.dev_env_username }}
           dev_env_password: ${{ secrets.dev_env_password }}
-        run: ./.github/scripts/deploy.sh "dev" 2 3 4 5 "$dev_env_username" "$dev_env_password" 8 9 10 11 12 13 14 15 16 17 18
+        run: ./.github/scripts/deploy.sh "dev"

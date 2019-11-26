@@ -2,27 +2,29 @@
 
 DEPLOYMENT=$1
 
-###### Deployment variables
-SERVER_USERNAME=$2
-SERVER_PASSWORD=$3
-DB_USERNAME=$4
-DB_PASSWORD=$5
-ENV_USERNAME=$6
-ENV_PASSWORD=$7
-SP_USERNAME=$8
-SP_PASSWORD=$9
-
-###### WUMAdmin Microservice
-WUMADMIN_EMAIL_USERNAME=$10
-WUMADMIN_EMAIL_PASSWORD=$11
-
-SUBSCRIPTION_SALESFORCE_CLIENT_SECRET=$12
-SUBSCRIPTION_SALESFORCE_CLIENT_ID=$13
-SUBSCRIPTION_SALESFORCE_TOKEN=$14
-SUBSCRIPTION_SALESFORCE_USERNAME=$15
-SUBSCRIPTION_SALESFORCE_PASSWORD=$16
-SUBSCRIPTION_JIRA_USERNAME=$17
-SUBSCRIPTION_JIRA_PASSWORD=$18
+# -------------------------------------- Environment Variables --------------------------------------
+####### Deployment variables
+# SERVER_USERNAME
+# SERVER_PASSWORD
+# DB_USERNAME
+# DB_PASSWORD
+# dev_env_username
+# dev_env_password
+# SP_USERNAME
+# SP_PASSWORD
+#
+####### WUMAdmin Microservice
+# WUMADMIN_EMAIL_USERNAME
+# WUMADMIN_EMAIL_PASSWORD
+#
+# SUBSCRIPTION_SALESFORCE_CLIENT_SECRET
+# SUBSCRIPTION_SALESFORCE_CLIENT_ID
+# SUBSCRIPTION_SALESFORCE_TOKEN
+# SUBSCRIPTION_SALESFORCE_USERNAME
+# SUBSCRIPTION_SALESFORCE_PASSWORD
+# SUBSCRIPTION_JIRA_USERNAME
+# SUBSCRIPTION_JIRA_PASSWORD
+# -------------------------------------- Environment Variables --------------------------------------
 
 # Set deployment specific variables
 if [[ ${DEPLOYMENT} = "dev" ]]
@@ -41,7 +43,7 @@ else
 fi
 
 VERSION="1.0.0-SNAPSHOT"
-USER_TENANT=${ENV_USERNAME}"@"${TENANT}
+USER_TENANT=${dev_env_username}"@"${TENANT}
 DB_TENANT="300_"${TENANT}
 DB_POOLSIZE="50"
 DB_MAX_RETRIES="3"
@@ -122,7 +124,7 @@ SUBSCRIPTION_DATABASE_URL="jdbc:mysql://mysql.storage.cloud.wso2.com:3306/"${SUB
 function appCloudLogin() {
 	echo "App Cloud Login"
 	curl -c cookies -v -X POST -k https://integration.cloud.wso2.com/appmgt/site/blocks/user/login/ajax/login.jag \
-	-d 'action=login&userName='${USER_TENANT}'&password='${ENV_PASSWORD}
+	-d 'action=login&userName='${USER_TENANT}'&password='${dev_env_password}
 }
 
 function appCloudLogout() {
