@@ -252,13 +252,6 @@ function uploadChannelsMS() {
 	-F fileupload=@${CHANNELS_FILE_PATH} -F isNewVersion=${NEW_VERSION} --progress-bar
 }
 
-echo "current directory: $PWD"
-
-ls -la ${GITHUB_WORKSPACE}
-ls -la ${GITHUB_WORKSPACE}/repository-api/
-ls -la ${GITHUB_WORKSPACE}/repository-api/channels
-ls -la ${GITHUB_WORKSPACE}/repository-api/channels/target
-
 appCloudLogin
 
 uploadProductsMS
