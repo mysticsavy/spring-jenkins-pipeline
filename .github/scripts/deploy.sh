@@ -26,14 +26,17 @@ DEPLOYMENT=$1
 # SUBSCRIPTION_JIRA_PASSWORD
 # -------------------------------------- Environment Variables --------------------------------------
 
+VERSION="1.0.0-SNAPSHOT"
 # Set deployment specific variables
 if [[ ${DEPLOYMENT} = "dev" ]]
 then
+  BUILD_VERSION=${VERSION}"-"${BUILD_NUMBER}
 	TENANT="wumdev"
 	CDN_URL="https://staging-cdn-updates.private.wso2.com/"
 	UPDATES_ENVIRONMENT="dev"
 elif [[ ${DEPLOYMENT} = "staging" ]]
 then
+  BUILD_VERSION=${VERSION}
 	TENANT="wumstaging"
 	CDN_URL="https://staging-cdn-updates.private.wso2.com/"
 	UPDATES_ENVIRONMENT="staging"
@@ -42,7 +45,6 @@ else
 	exit 1
 fi
 
-VERSION="1.0.0-SNAPSHOT"
 USER_TENANT=${dev_env_username}"@"${TENANT}
 DB_TENANT="300_"${TENANT}
 DB_POOLSIZE="50"
@@ -59,31 +61,31 @@ UPDATES_LIFECYCLE_STATES="Regression,Broken,Released,ReleasedNotAutomated,Releas
 PRODUCTS_APPNAME="products-v3"
 PRODUCTS_APP_DESC="Products-MS"
 PRODUCTS_DB="productsdb"
-PRODUCTS_VERSION=${VERSION}
+PRODUCTS_VERSION=${BUILD_VERSION}
 # PRODUCTS_UMT_TOKEN="441b2412365fefceca449e2d5d24e1d"
 # PRODUCTS_UMT_API_URL="https://umt.private.wso2.com"
 # PRODUCTS_UMT_API_PATH="wumapi/1.0.0/properties?path=/_system/governance/patchs/WSO2-CARBON-PATCH-"
 # PRODUCTS_IGNORED_EXTENSIONS="jag,js,sh,css,html,xml,conf,war,json"
-PRODUCTS_JAR="products-"${VERSION}".jar"
-PRODUCTS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/products/target/products-"${VERSION}".jar"
+PRODUCTS_JAR="products-"${BUILD_VERSION}".jar"
+PRODUCTS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/products/target/products-"${BUILD_VERSION}".jar"
 PRODUCTS_API_URL="https://"${TENANT}"-products-v3.wso2apps.com/products/"
 
 ###### Updates Microservice
 UPDATES_APPNAME="updates-v3"
 UPDATES_APP_DESC="Updates-MS"
 UPDATES_DB="updatesdb"
-UPDATES_VERSION=${VERSION}
-UPDATES_JAR="updates-"${VERSION}".jar"
-UPDATES_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/updates/target/updates-"${VERSION}".jar"
+UPDATES_VERSION=${BUILD_VERSION}
+UPDATES_JAR="updates-"${BUILD_VERSION}".jar"
+UPDATES_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/updates/target/updates-"${BUILD_VERSION}".jar"
 UPDATES_API_URL="https://"${TENANT}"-"${UPDATES_APPNAME}".wso2apps.com/updates/"
 
 ###### Subscription Microservice
 SUBSCRIPTION_APPNAME="subscriptions-v3"
 SUBSCRIPTION_APP_DESC="Subscription-MS"
-SUBSCRIPTION_VERSION=${VERSION}
+SUBSCRIPTION_VERSION=${BUILD_VERSION}
 SUBSCRIPTION_DB="subscriptiondb"
-SUBSCRIPTION_JAR="subscriptions-"${VERSION}".jar"
-SUBSCRIPTION_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/subscriptions/target/subscriptions-"${VERSION}".jar"
+SUBSCRIPTION_JAR="subscriptions-"${BUILD_VERSION}".jar"
+SUBSCRIPTION_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/subscriptions/target/subscriptions-"${BUILD_VERSION}".jar"
 SUBSCRIPTION_SALESFORCE_URL="https://wso2.my.salesforce.com"
 SUBSCRIPTION_TRIAL_DAYS="15"
 SUBSCRIPTION_CACHE_EXPIRY="1"
@@ -95,10 +97,10 @@ SUBSCRIPTIONS_API_URL="https://"${TENANT}"-subscriptions-v3.wso2apps.com/subscri
 CHANNELS_APPNAME="channels-v3"
 CHANNELS_APP_DESC="CHANNELS-MS"
 CHANNELS_DB="channelsdb"
-CHANNELS_VERSION=${VERSION}
-CHANNELS_JAR="channels-"${VERSION}".jar"
+CHANNELS_VERSION=${BUILD_VERSION}
+CHANNELS_JAR="channels-"${BUILD_VERSION}".jar"
 DEFAULT_CHANNEL="full"
-CHANNELS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/channels/target/channels-"${VERSION}".jar"
+CHANNELS_FILE_PATH=${GITHUB_WORKSPACE}"/repository-api/channels/target/channels-"${BUILD_VERSION}".jar"
 CHANNELS_API_URL="https://"${TENANT}"-channels-v3.wso2apps.com/channels/"
 
 ##################################################################################################################
